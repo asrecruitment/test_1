@@ -1,0 +1,33 @@
+databaseChangeLog:
+    - changeSet:
+        id: 1
+        author: rec
+        changes:
+            - createTable:
+                tableName: product
+                columns:
+                    - column:
+                        name: ean
+                        type: varchar(255)
+                        constraints:
+                          primaryKey: true
+                    - column:
+                        name: name
+                        type: varchar(255)
+                        constraints:
+                          nullable: false
+                    - column:
+                        name: label
+                        type: varchar(255)
+                        constraints:
+                          nullable: false
+                    - column:
+                        name: available
+                        type: boolean
+                        constraints:
+                          nullable: false
+            - loadData:
+                encoding: UTF-8
+                file: db/changelog/data/product.csv
+                separator: ;
+                tableName: product
